@@ -19,5 +19,29 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::create([
+            'name'      => 'Anang Bima Perdana',
+            'email'     => 'anangbima11@gmail.com',
+            'username'  => 'anangbima',
+            'password'  => '1Januari2001',
+            'role'      => 'user',
+        ]);
+
+        User::create([
+            'name'      => 'Admin',
+            'email'     => 'admin@gmail.com',
+            'username'  => 'admin',
+            'password'  => 'admin',
+            'role'      => 'admin',
+        ]);
+
+        User::create([
+            'name'      => 'Verifikator',
+            'email'     => 'verifikator@gmail.com',
+            'username'  => 'verifikator',
+            'password'  => 'verifikator',
+            'role'      => 'verifikator',
+        ]);
     }
 }

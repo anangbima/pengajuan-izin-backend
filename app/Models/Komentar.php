@@ -13,4 +13,8 @@ class Komentar extends Model
         'izin_id',
         'isi',
     ];
+
+    public function izin () {
+        return $this->belongsTo(Izin::class);
+    }
 }
