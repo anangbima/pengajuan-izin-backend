@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('judul');
             $table->enum('jenis', ['cuti', 'sakit', 'lainnya']);
             $table->longText('isi');
-            $table->enum('status', ['belum diproses', 'ditolak', 'direvisi', 'diterima',]);
+            $table->enum('status', ['belum diproses', 'ditolak', 'direvisi', 'diterima', 'dibatalkan']);
             $table->timestamps();
         });
     }

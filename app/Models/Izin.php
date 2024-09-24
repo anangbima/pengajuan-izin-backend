@@ -24,4 +24,6 @@ class Izin extends Model
     public function komentar () {
         return $this->hasMany(Komentar::class);
     }
+
+    
 }

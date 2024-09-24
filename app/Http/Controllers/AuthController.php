@@ -40,6 +40,7 @@ class AuthController extends Controller
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']),
             'role'      => $data['role'],
+            'status'    => $data['status']
         ]);
 
         $token = $storeUser->createToken('access_token', ['access-api'])->plainTextToken;
@@ -58,4 +59,11 @@ class AuthController extends Controller
             'message'   => 'Logged out successfully'
         ]);
     }
+
+    // Manage Reset Password
+    public function resetPassword(User $user) {
+
+    }
+
+    
 }

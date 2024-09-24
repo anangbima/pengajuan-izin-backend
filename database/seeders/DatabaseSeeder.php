@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'username'  => 'anangbima',
             'password'  => '1Januari2001',
             'role'      => 'user',
+            'status'    => 'verify'
         ]);
 
         User::create([
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'username'  => 'admin',
             'password'  => 'admin',
             'role'      => 'admin',
+            'status'    => 'verify'
         ]);
 
         User::create([
@@ -42,6 +44,7 @@ class DatabaseSeeder extends Seeder
             'username'  => 'verifikator',
             'password'  => 'verifikator',
             'role'      => 'verifikator',
+            'status'    => 'verify'
         ]);
     }
 }

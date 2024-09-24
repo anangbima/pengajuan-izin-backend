@@ -23,6 +23,7 @@ class User extends Authenticatable
         'role',
         'email',
         'password',
+        'status'
     ];
 
     /**
@@ -50,5 +51,21 @@ class User extends Authenticatable
 
     public function izin() {
         return $this->hasMany(Izin::class);
+    }
+
+    public function scopeFilter($query, $key) {
+        if ($key) {
+            return $query->where('status', $key)->get();
+        }
+
+        return $query;
+    }
+
+    public function scopeRole($query, $key) {
+        if ($key) {
+            return $query->where('role', $key)->get();
+        }
+
+        return $query;
     }
 }

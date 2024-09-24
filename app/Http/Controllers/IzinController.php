@@ -82,4 +82,17 @@ class IzinController extends Controller
             ], 200);
         }
     }
+
+    // Update Status Izin
+    public function updateStatus(Request $request, Izin $izin) {
+        $updateIzin = $izin->update([
+            'status'    => $request['status'], 
+        ]);
+
+        if ($updateIzin) {
+            return response()->json([
+                'message'   => 'Update Successfully'
+            ], 200);
+        }
+    }
 }
