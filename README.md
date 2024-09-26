@@ -11,17 +11,17 @@ Backend untuk aplikasi Pengajuan Izin
    ```
    composer install
    ```
-4. Copy file .env.example
-5. Konfigurasi .env: Sesuaikan konfigurasi database, aplikasi, dan lainnya di file .env.
-6. jalankan Migrasi
+3. Copy file .env.example
+4. Konfigurasi .env: Sesuaikan konfigurasi database, aplikasi, dan lainnya di file .env.
+5. jalankan Migrasi
    ```
    php artisan migrate
    ```
-8. Jalankan seed
+6. Jalankan seed
    ```
    php artisan db:seed
    ```
-9. Jalankan server development
+7. Jalankan server development
     ```
     php artisan serve
     ```
