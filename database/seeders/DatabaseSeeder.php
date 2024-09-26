@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'name'      => 'Anang Bima Perdana',
             'email'     => 'anangbima11@gmail.com',
             'username'  => 'anangbima',
-            'password'  => '1Januari2001',
+            'password'  => '12345678',
             'role'      => 'user',
             'status'    => 'verify'
         ]);
