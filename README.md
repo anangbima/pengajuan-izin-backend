@@ -8,19 +8,22 @@ Backend untuk aplikasi Pengajuan Izin
 
 1. Clone Repository
 2. Install dependensi
-   
+   '''
     composer install
+   '''
 
-3. Copy file .env.example
-4. Konfigurasi .env: Sesuaikan konfigurasi database, aplikasi, dan lainnya di file .env.
-5. jalankan Migrasi
-
+4. Copy file .env.example
+5. Konfigurasi .env: Sesuaikan konfigurasi database, aplikasi, dan lainnya di file .env.
+6. jalankan Migrasi
+    '''
     php artisan migrate
+   '''
    
-7. Jalankan seed
-   
+8. Jalankan seed
+   '''
     php artisan db:seed
-   
-8. Jalankan server development
-
+   '''
+9. Jalankan server development
+    '''
     php artisan serve
+    '''
