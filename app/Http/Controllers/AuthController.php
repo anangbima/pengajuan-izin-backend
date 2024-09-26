@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -63,6 +64,28 @@ class AuthController extends Controller
     // Manage Reset Password
     public function resetPassword(User $user) {
 
+    }
+
+    // Manage Update Password
+    public function updatePassword(UpdatePasswordRequest $request, User $user) {
+        $data = $request->validated();
+        $user = User::where('email', $user['email'])->first();
+
+        if (!$user || !Hash::check($data['password_old'], $user['password'])){
+            return response()->json([
+                'message'       => ' password is incorrect'
+            ], 401);
+        }
+
+        $updatePassword = $user->update([
+            'password'      => Hash::make($data['password']),
+        ]);
+
+        if($updatePassword) {
+            return response()->json([
+                'message'   => 'Update successfully'
+            ]);
+        }
     }
 
     

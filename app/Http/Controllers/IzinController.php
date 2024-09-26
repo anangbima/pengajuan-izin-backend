@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIzinRequest;
 use App\Http\Requests\UpdateIzinRequest;
 use App\Models\Izin;
+use App\Models\Komentar;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IzinController extends Controller
@@ -49,7 +51,7 @@ class IzinController extends Controller
     public function show(Izin $izin)
     {
         return response()->json([
-            'izin'      => $izin::with('user', 'komentar')->first(),
+            'izin'      => $izin::where('id', $izin['id'])->with('user', 'komentar')->first(),
         ], 200);
     }
 
@@ -85,14 +87,45 @@ class IzinController extends Controller
 
     // Update Status Izin
     public function updateStatus(Request $request, Izin $izin) {
-        $updateIzin = $izin->update([
-            'status'    => $request['status'], 
-        ]);
 
-        if ($updateIzin) {
-            return response()->json([
-                'message'   => 'Update Successfully'
-            ], 200);
+        if ($request['status'] == 'ditolak' || $request['status'] == 'direvisi') {
+            
+            $updateIzin = $izin->update([
+                'status'    => $request['status'], 
+            ]);
+
+            if ($updateIzin) {
+                $storeKomentar = Komentar::create([
+                    'isi'       => $request['komentar'],
+                    'izin_id'   => $izin['id']
+                ]);
+
+                if ($storeKomentar) {
+                    return response()->json([
+                        'message'   => 'Update Successfully'
+                    ], 200);
+                }
+            }
+            
+        }else{
+            $updateIzin = $izin->update([
+                'status'    => $request['status'], 
+            ]);
+
+            if ($updateIzin) {
+                return response()->json([
+                    'message'   => 'Update Successfully'
+                ], 200);
+            }
         }
+    }
+
+    // get izin by user
+    public function getIzinbyUser(User $user) {
+        $izin = Izin::where('user_id', $user['id'])->with('komentar')->get();
+
+        return response()->json([
+            'izin'      => $izin,
+        ], 200);
     }
 }

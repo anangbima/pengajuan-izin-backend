@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class SignUpRequest extends FormRequest
+class UpdatePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,7 @@ class SignUpRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      => 'required|string',
-            'role'      => 'required',
-            'status'    => 'required',
-            'username'  => 'required|string|unique:users,username|max:255',
-            'email'     => 'required|string|unique:users,email|max:255',
+            'password_old'      => 'required',
             'password'  => [
                 'required',
                 'string',

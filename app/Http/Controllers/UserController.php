@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     // Melihat semua data user
-    public function index($status = null, $role = null) {
-        $user = User::filter($status)->role($role);
+    public function index() {
+        $user = User::get();
+        // $user = User::filter($status)->role($role);
 
         return response()->json([
             'user'      => $user
